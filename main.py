@@ -24,10 +24,14 @@ def join_party(party_id):
         payload = data
     except:
         payload = {
-            'error': 'authorization error'
+            'error': 'Unable to join party.'
         }
     
-    return jsonify(payload)
+    return app.response_class(
+        response=json.dumps(payload),
+        status=200,
+        mimetype='application/json'
+    ) 
 
 
 # run the app.
