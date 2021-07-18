@@ -27,7 +27,7 @@ def join_party(party_id):
             'error': 'Unable to join party.'
         }
     
-    return app.response_class(
+    return Response(
         response=jsonify(payload),
         status=200,
         mimetype='application/json'
