@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import Flask, request, cli, jsonify, Response
 from flask_cors import CORS
-import urllib3
+import urllib3, json
 
 import client
 
@@ -16,11 +16,11 @@ def home():
 
 @app.route('/valorant/join/<party_id>', methods=['POST'])
 def join_party(party_id):
-    json = request.get_json()
+    json_data = request.get_json()
     region = request.args.get('region')
     payload = {}
     try:
-        data = client.join_party(json['username'],json['password'],region,party_id)
+        data = client.join_party(json_data['username'],json_data['password'],region,party_id)
         payload = data
     except:
         payload = {
