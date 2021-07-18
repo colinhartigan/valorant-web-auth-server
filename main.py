@@ -28,7 +28,7 @@ def join_party(party_id):
         }
     
     return app.response_class(
-        response=json.dumps(payload),
+        response=jsonify(payload),
         status=200,
         mimetype='application/json'
     ) 
